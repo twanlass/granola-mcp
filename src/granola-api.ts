@@ -182,35 +182,6 @@ export class GranolaAPI {
     );
   }
 
-  async findLatest1on1(personName: string): Promise<{
-    document: GranolaDocument;
-  } | null> {
-    const documents = await this.getRecentDocuments(50);
-    const nameLower = personName.toLowerCase();
-
-    // Find documents that match the person name and contain "1:1" or "1x1"
-    const matching = documents.filter((doc) => {
-      const titleLower = doc.title.toLowerCase();
-      const hasName = titleLower.includes(nameLower);
-      const is1on1 = titleLower.includes("1:1") || titleLower.includes("1x1");
-      return hasName && is1on1;
-    });
-
-    if (matching.length === 0) {
-      return null;
-    }
-
-    // Sort by created_at descending to get most recent
-    matching.sort(
-      (a, b) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-    );
-
-    return {
-      document: matching[0],
-    };
-  }
-
   convertProseMirrorToMarkdown(pmContent: ProseMirrorNode | null): string {
     if (!pmContent) {
       return "";
