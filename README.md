@@ -21,6 +21,7 @@ npm run build
 Add this to your Claude Desktop config file:
 
 **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+
 **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 
 ```json
@@ -35,6 +36,14 @@ Add this to your Claude Desktop config file:
 ```
 
 Replace `/path/to/granola-mcp` with the actual path to this repository.
+
+## Claude Code Configuration
+
+Run this command to add the MCP server to Claude Code:
+
+```bash
+claude mcp add granola node /path/to/granola-mcp/dist/index.js
+```
 
 ## Available Tools
 
